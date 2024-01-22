@@ -6,56 +6,70 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct CategoryCellView: View {
-    let title: String
-    let subtitle: String
-    let imageURL: String
-    let isPaid: Bool
+    let store: Store<CategoryDomain.State, CategoryDomain.Action>
     
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: imageURL)) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 121, height: 90)
-            .padding(8)
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Title")
-                    .font(.system(size: 16, weight: .bold))
-                
-                Text("Subtitle")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundColor(.gray)
-                
-                if isPaid {
-                    HStack(spacing: 4) {
-                        Image("lock_icon")
-                            .resizable()
-                            .renderingMode(.template)
-                            .frame(width: 10, height: 12)
-                            .foregroundColor(.blue)
-                        Text("Premium")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.blue)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            ZStack {
+                HStack(alignment: .top, spacing: 16) {
+                    AsyncImage(url: URL(string: viewStore.animal.image)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
                     }
-                    .padding(.top)
+                    .frame(width: 121, height: 90)
+                    .padding(8)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(viewStore.animal.title)
+                            .font(.system(size: 16, weight: .bold))
+                        
+                        Text(viewStore.animal.description)
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
+                        
+                        Spacer()
+                        
+                        if viewStore.actualState == .paid {
+                            HStack(spacing: 4) {
+                                Image("lock_icon")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .frame(width: 10, height: 12)
+                                    .foregroundColor(.blue)
+                                Text("Premium")
+                                    .font(.system(size: 16, weight: .bold))
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                    }
+                    .padding(.vertical)
+                    
+                    Spacer()
                 }
             }
-            .padding(.top, 12)
-            
-            Spacer()
+            .background(.white)
+            .cornerRadius(8)
+            .padding(.horizontal, 24)
+            .shadow(color: .black.opacity(0.3), radius: 5)
+            .onTapGesture {
+                viewStore.send(.setFactsView(viewStore.actualState))
+            }
         }
-        .background(.white)
-        .cornerRadius(8)
-        .padding(.horizontal, 24)
-        .shadow(color: .black.opacity(0.3), radius: 5)
     }
 }
 
 #Preview {
-    CategoryCellView(title: "Cats", subtitle: "All about cats", imageURL: "", isPaid: true)
+    CategoryCellView(
+        store: Store(
+            initialState: CategoryDomain.State(id: UUID(), animal: .sample, actualState: Animal.sample.itemStatus),
+            reducer: {
+                CategoryDomain()
+            }
+        )
+    )
 }

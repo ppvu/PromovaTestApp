@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
     var body: some View {
-        CategoriesListView()
+        CategoriesListView(
+            store: Store(
+                initialState: CategoriesListDomain.State()
+            ) {
+                CategoriesListDomain(
+                    fetchCategories: {
+                        try await APIClient.live.fetchCategories()
+                    }
+                )
+            }
+        )
     }
 }
 
