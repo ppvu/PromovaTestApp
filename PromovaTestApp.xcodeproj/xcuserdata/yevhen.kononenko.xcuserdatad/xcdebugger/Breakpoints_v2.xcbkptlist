@@ -7,95 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "82F33508-B640-4748-8A84-D667830C15F7"
+            uuid = "C05ACA05-FAB4-4B60-B5BB-F358FD635416"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactDomain.swift"
+            filePath = "PromovaTestApp/Categories/CategoriesListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F583B919-A815-4DD6-9E75-9738CA172B12"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactDomain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "03BC556A-AB61-41E6-92DA-165BB44AA566"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4C2CA4D3-38B0-41AD-B19D-D1E95205FA19"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactsListDomain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "4C2CA4D3-38B0-41AD-B19D-D1E95205FA19 - a9ed5337ce7fde4d"
+                  uuid = "C05ACA05-FAB4-4B60-B5BB-F358FD635416 - 4e8a0a6e60eecf07"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
+                  symbolName = "closure #3 (ComposableArchitecture.Store&lt;PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action&gt;) -&gt; PromovaTestApp.FactsListView in PromovaTestApp.CategoriesListView.body.getter : some"
                   moduleName = "PromovaTestApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
+                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Categories/CategoriesListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "264">
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
-                  uuid = "4C2CA4D3-38B0-41AD-B19D-D1E95205FA19 - a9ed5337ce7fde4d"
+                  uuid = "C05ACA05-FAB4-4B60-B5BB-F358FD635416 - 4e8a0a6e60eecfa2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
+                  symbolName = "closure #3 (ComposableArchitecture.Store&lt;PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action&gt;) -&gt; PromovaTestApp.FactsListView in PromovaTestApp.CategoriesListView.body.getter : some"
                   moduleName = "PromovaTestApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
+                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Categories/CategoriesListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "268">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,191 +55,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9CC2F7A7-7D9F-4BB1-A66D-0C502465EA71"
+            uuid = "19AE2204-52F1-44C4-9BE5-98948BDB43BA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactsListDomain.swift"
+            filePath = "PromovaTestApp/Categories/CategoriesListDomain.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "9CC2F7A7-7D9F-4BB1-A66D-0C502465EA71 - a9ed5337ce7fddaa"
+                  uuid = "19AE2204-52F1-44C4-9BE5-98948BDB43BA - a37cd0c5c1082408"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
+                  symbolName = "closure #1 (inout PromovaTestApp.CategoriesListDomain.State, PromovaTestApp.CategoriesListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.CategoriesListDomain.Action&gt; in PromovaTestApp.CategoriesListDomain.body.getter : some"
                   moduleName = "PromovaTestApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
+                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Categories/CategoriesListDomain.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "240">
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1884">
                </Location>
                <Location
-                  uuid = "9CC2F7A7-7D9F-4BB1-A66D-0C502465EA71 - a9ed5337ce7fddaa"
+                  uuid = "19AE2204-52F1-44C4-9BE5-98948BDB43BA - a37cd0c5c1082408"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
+                  symbolName = "closure #1 (inout PromovaTestApp.CategoriesListDomain.State, PromovaTestApp.CategoriesListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.CategoriesListDomain.Action&gt; in PromovaTestApp.CategoriesListDomain.body.getter : some"
                   moduleName = "PromovaTestApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
+                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Categories/CategoriesListDomain.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "244">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D1B045A5-FFCC-4EBA-9A76-2FC8EF2D338D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactsListDomain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "D1B045A5-FFCC-4EBA-9A76-2FC8EF2D338D - a9ed5337ce7fdec1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
-                  moduleName = "PromovaTestApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "400">
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1900">
                </Location>
                <Location
-                  uuid = "D1B045A5-FFCC-4EBA-9A76-2FC8EF2D338D - a9ed5337ce7fdec1"
+                  uuid = "19AE2204-52F1-44C4-9BE5-98948BDB43BA - a37cd0c5c10821ba"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
+                  symbolName = "closure #1 (inout PromovaTestApp.CategoriesListDomain.State, PromovaTestApp.CategoriesListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.CategoriesListDomain.Action&gt; in PromovaTestApp.CategoriesListDomain.body.getter : some"
                   moduleName = "PromovaTestApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
+                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Categories/CategoriesListDomain.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "432">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9B13EAF5-6643-453D-A26D-4EACFA869317"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactsListDomain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "9B13EAF5-6643-453D-A26D-4EACFA869317 - a9ed5337ce7fde83"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
-                  moduleName = "PromovaTestApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "588">
-               </Location>
-               <Location
-                  uuid = "9B13EAF5-6643-453D-A26D-4EACFA869317 - a9ed5337ce7fde83"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
-                  moduleName = "PromovaTestApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "620">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "862D80AF-571E-42B7-85B2-12B1AE81C392"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PromovaTestApp/Facts/FactsListDomain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "862D80AF-571E-42B7-85B2-12B1AE81C392 - a9ed5337ce7fdf45"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
-                  moduleName = "PromovaTestApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "612">
-               </Location>
-               <Location
-                  uuid = "862D80AF-571E-42B7-85B2-12B1AE81C392 - a9ed5337ce7fdf45"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (inout PromovaTestApp.FactsListDomain.State, PromovaTestApp.FactsListDomain.Action) -&gt; ComposableArchitecture.Effect&lt;PromovaTestApp.FactsListDomain.Action&gt; in PromovaTestApp.FactsListDomain.body.getter : some"
-                  moduleName = "PromovaTestApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhen.kononenko/Desktop/PromovaTestApp/PromovaTestApp/Facts/FactsListDomain.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "636">
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "2452">
                </Location>
             </Locations>
          </BreakpointContent>

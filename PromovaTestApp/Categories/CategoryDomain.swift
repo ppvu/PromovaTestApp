@@ -11,9 +11,8 @@ import ComposableArchitecture
 @Reducer
 struct CategoryDomain {
     struct State: Equatable, Identifiable {
-        let id: UUID
+        var id: Animal { animal }
         let animal: Animal
-        var isCategoryDisabled = false
         var actualState: ItemStatus
     }
     
@@ -25,15 +24,7 @@ struct CategoryDomain {
         Reduce { state, action in
             switch action {
             case .setFactsView(let status):
-                switch status {
-                case .free:
-                    return .none
-                case .paid:
-                    return .none
-                case .comingSoon:
-                    state.isCategoryDisabled = true
-                    return .none
-                }
+                return .none
             }
         }
     }

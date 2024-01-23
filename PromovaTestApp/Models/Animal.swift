@@ -13,7 +13,7 @@ enum ItemStatus {
     case comingSoon
 }
 
-struct Animal: Equatable, Decodable {
+struct Animal: Equatable, Decodable, Hashable {
     let title: String
     let description: String
     let image: String
@@ -46,7 +46,7 @@ extension Animal {
     }
 }
 
-struct Fact: Decodable, Equatable, Identifiable {
+struct Fact: Decodable, Equatable, Identifiable, Hashable {
     let id = UUID()
     let fact: String
     let image: String

@@ -22,6 +22,7 @@
 		3BEC6FF92B5D608E00100BC2 /* FactDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC6FF82B5D608E00100BC2 /* FactDomain.swift */; };
 		3BEC6FFB2B5D804500100BC2 /* CategoryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC6FFA2B5D804500100BC2 /* CategoryDomain.swift */; };
 		3BEC6FFE2B5D87FD00100BC2 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC6FFD2B5D87FD00100BC2 /* APIClient.swift */; };
+		3BEC70022B60076900100BC2 /* EmptyFactsStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC70012B60076900100BC2 /* EmptyFactsStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		3BEC6FF82B5D608E00100BC2 /* FactDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactDomain.swift; sourceTree = "<group>"; };
 		3BEC6FFA2B5D804500100BC2 /* CategoryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDomain.swift; sourceTree = "<group>"; };
 		3BEC6FFD2B5D87FD00100BC2 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3BEC70012B60076900100BC2 /* EmptyFactsStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFactsStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				3BEC6FF22B5D3F9800100BC2 /* FactView.swift */,
 				3BEC6FF42B5D40E700100BC2 /* FactsListView.swift */,
 				3BEC6FF82B5D608E00100BC2 /* FactDomain.swift */,
+				3BEC70012B60076900100BC2 /* EmptyFactsStateView.swift */,
 			);
 			path = Facts;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				3BEC6FF52B5D40E700100BC2 /* FactsListView.swift in Sources */,
 				3BEC6FF32B5D3F9800100BC2 /* FactView.swift in Sources */,
 				3BEC6FF12B5D3BA700100BC2 /* Animal.swift in Sources */,
+				3BEC70022B60076900100BC2 /* EmptyFactsStateView.swift in Sources */,
 				3BEC6FF92B5D608E00100BC2 /* FactDomain.swift in Sources */,
 				3BEC6FD52B5D2B0F00100BC2 /* PromovaTestAppApp.swift in Sources */,
 				3BEC6FE92B5D2DF800100BC2 /* CategoryCellView.swift in Sources */,

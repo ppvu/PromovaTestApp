@@ -12,6 +12,7 @@ import ComposableArchitecture
 struct FactsListDomain {
     struct State: Equatable {
         let animal: Animal
+        var actualState: ItemStatus
         var factDomain = FactDomain.State()
     }
     

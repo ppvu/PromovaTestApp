@@ -13,27 +13,34 @@ struct FactsListView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ZStack {
-                Color.green.ignoresSafeArea()
-                TabView(
-                    selection: viewStore.binding(
-                        get: \.factDomain.selectedIndex,
-                        send: FactsListDomain.Action.tabSelected
-                    )
-                ) {
+            NavigationView {
+                ZStack {
+                    Color.green.ignoresSafeArea()
+                }
+                .overlay(alignment: .center) {
                     if let facts = viewStore.animal.content {
-                        let fact = facts[viewStore.factDomain.selectedIndex]
-                        FactView(
-                            store: store.scope(state: \.factDomain, action: \.fact),
-                            fact: fact
-                        )
-                        .tag(fact.id)
+                        TabView(
+                            selection: viewStore.binding(
+                                get: \.factDomain.selectedIndex,
+                                send: FactsListDomain.Action.tabSelected
+                            )
+                        ) {
+                            let fact = facts[viewStore.factDomain.selectedIndex]
+                            FactView(
+                                store: store.scope(state: \.factDomain, action: \.fact),
+                                fact: fact
+                            )
+                            .tag(fact.id)
+                        }
+                        .frame(height: 435)
+                        .cornerRadius(8)
+                        .padding(.horizontal, 24)
+                    } else {
+                        EmptyFactsStateView()
                     }
                 }
-                .frame(height: 435)
-                .cornerRadius(8)
-                .padding(.horizontal, 24)
             }
+            .navigationTitle(viewStore.animal.title)
         }
     }
 }
@@ -43,6 +50,7 @@ struct FactsListView: View {
         store: Store(
             initialState: FactsListDomain.State(
                 animal: Animal.sample,
+                actualState: Animal.sample.itemStatus,
                 factDomain: FactDomain.State()
             )
         ) {
