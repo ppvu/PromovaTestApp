@@ -27,11 +27,11 @@ struct FactsListView: View {
                     if let facts = viewStore.animal.content {
                         TabView(
                             selection: viewStore.binding(
-                                get: \.factDomain.selectedIndex,
+                                get: \.selectedIndex,
                                 send: FactsListDomain.Action.tabSelected
                             )
                         ) {
-                            let fact = facts[viewStore.factDomain.selectedIndex]
+                            let fact = facts[viewStore.selectedIndex]
                             FactView(
                                 store: store.scope(state: \.factDomain, action: \.fact),
                                 fact: fact
@@ -52,7 +52,7 @@ struct FactsListView: View {
                     )
                 ) {
                     if let facts = viewStore.animal.content {
-                        ActivityView(text: facts[viewStore.factDomain.selectedIndex].fact)
+                        ActivityView(text: facts[viewStore.selectedIndex].fact)
                     }
                 }
             }

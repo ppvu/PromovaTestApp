@@ -11,7 +11,6 @@ import ComposableArchitecture
 @Reducer
 struct FactDomain {
     struct State: Equatable {
-        var selectedIndex = 0
         var shouldDisablePreviousButton = true
         var shouldDisableNextButton = false
     }
@@ -32,11 +31,9 @@ struct FactDomain {
                 switch type {
                 case .previous:
                     state.shouldDisableNextButton = false
-                    state.selectedIndex -= 1
                     return .none
                 case .next:
                     state.shouldDisablePreviousButton = false
-                    state.selectedIndex += 1
                     return .none
                 }
             }
