@@ -1,5 +1,8 @@
 # Animals List Application using TCA (The Composable Architecture)
-<img src="https://user-images.githubusercontent.com/75310530/234407425-dd4330ab-f640-4293-b479-5efb3ebfa7f4.png" width="350" height="800">
+
+Animals list Screen        |  Facts List Screen
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/xoPe4p5.png)  |  ![](https://i.imgur.com/389jJqt.png)
 
 This is a simple iOS application that uses some API to display the animals list with different data. The application displays cells with the all animal data and it's payment status that can be changed. After tapping on cell user can see the different cools facts about provided animals!
 
