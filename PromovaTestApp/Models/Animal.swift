@@ -7,29 +7,26 @@
 
 import Foundation
 
-enum ItemStatus {
-    case paid
-    case free
-    case comingSoon
-}
-
-struct Animal: Equatable, Decodable, Hashable {
+struct Animal: Equatable, Decodable, Hashable, Identifiable {
+    enum Status: String, Decodable {
+        case paid
+        case free
+    }
+    
+    let id = UUID()
     let title: String
     let description: String
     let image: String
     let order: Int
-    let status: String
+    var status: Status
     let content: [Fact]?
     
-    var itemStatus: ItemStatus {
-        switch status {
-        case "paid":
-            return .paid
-        case "free":
-            return .free
-        default:
-            return .comingSoon
-        }
+    enum CodingKeys: String, CodingKey {
+        case title, description, image, order, status, content
+    }
+    
+    mutating func setStatus(newStatus: Status) {
+        status = newStatus
     }
 }
 
@@ -40,14 +37,8 @@ extension Animal {
             description: "Some description",
             image: "url",
             order: 1,
-            status: "paid",
+            status: .paid,
             content: [.init(fact: "123", image: ""), .init(fact: "345", image: ""), .init(fact: "123456", image: "")]
         )
     }
-}
-
-struct Fact: Decodable, Equatable, Identifiable, Hashable {
-    let id = UUID()
-    let fact: String
-    let image: String
 }

@@ -14,7 +14,7 @@ struct FactView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
                 AsyncImage(url: URL(string: fact.image)) { image in
                     image.resizable()
                 } placeholder: {
@@ -22,8 +22,6 @@ struct FactView: View {
                 }
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
-                
-                Spacer()
                 
                 Text(fact.fact)
                     .font(.system(size: 16, weight: .semibold))
@@ -36,11 +34,7 @@ struct FactView: View {
                     Button {
                         viewStore.send(.moveButtonTapped(.previous))
                     } label: {
-                        Image("back_button")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(viewStore.shouldDisablePreviousButton ? .gray : .black)
-                            .frame(width: 50, height: 50)
+                        moveButton(shouldDisableButton: viewStore.shouldDisablePreviousButton)
                     }
                     .disabled(viewStore.shouldDisablePreviousButton)
                     
@@ -49,18 +43,24 @@ struct FactView: View {
                     Button {
                         viewStore.send(.moveButtonTapped(.next))
                     } label: {
-                        Image("next_button")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(viewStore.shouldDisableNextButton ? .gray : .black)
-                            .frame(width: 50, height: 50)
+                        moveButton(isLeft: false, shouldDisableButton: viewStore.shouldDisableNextButton)
                     }
                     .disabled(viewStore.shouldDisableNextButton)
                 }
+                .padding(.horizontal)
             }
             .cornerRadius(8)
             .padding()
         }
+    }
+    
+    private func moveButton(isLeft: Bool = true, shouldDisableButton: Bool) -> some View {
+        let imageName = isLeft ? Images.leftIconName : Images.rightIconName
+        return Image(imageName)
+            .resizable()
+            .renderingMode(.template)
+            .foregroundColor(shouldDisableButton ? .gray : .black)
+            .frame(width: 50, height: 50)
     }
 }
 

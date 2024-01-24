@@ -10,21 +10,32 @@ import ComposableArchitecture
 
 struct CategoriesListDomain: Reducer {
     struct State: Equatable {
-        var categoriesList: IdentifiedArrayOf<CategoryDomain.State> = []
-        var path = StackState<FactsListDomain.State>()
+        var categoriesList: IdentifiedArrayOf<Animal> = []
+        var dataLoadingStatus = DataLoadingStatus.notStarted
+        var isLoadingAfterAlertConfirmation = false
+        
+        @PresentationState var path: FactsListDomain.State?
         @PresentationState var confirmationAlert: AlertState<Action.Alert>?
+        
+        var shouldShowError: Bool {
+            dataLoadingStatus == .error
+        }
+        
+        var isDataLoading: Bool {
+            dataLoadingStatus == .loading
+        }
     }
     
     enum Action {
         case fetchCategories
         case fetchCategoriesResponse(TaskResult<[Animal]>)
         case alert(PresentationAction<Alert>)
-        case setNavigation(selection: UUID?)
-        case setNavigationIsActiveDelayCompleted(selection: UUID)
-        case path(StackAction<FactsListDomain.State, FactsListDomain.Action>)
+        case path(PresentationAction<FactsListDomain.Action>)
+        case cellTapped(Animal)
+        case isLoadingFinished(Animal)
         
         enum Alert: Equatable {
-            case didConfirmAlert(FactsListDomain.State)
+            case didConfirmAlert(Animal)
             case didCancelAlert
         }
     }
@@ -38,65 +49,84 @@ struct CategoriesListDomain: Reducer {
         Reduce { state, action in
             switch action {
             case .fetchCategories:
-                return .run { send in
-                    await send(.fetchCategoriesResponse(TaskResult { try await fetchCategories() }))
-                }
+                return fetchCategories(state: &state)
             case .fetchCategoriesResponse(.success(let animals)):
-                state.categoriesList = IdentifiedArrayOf(
-                    uniqueElements: animals
-                        .sorted(by: { $0.order < $1.order })
-                        .map {
-                            CategoryDomain.State(animal: $0, actualState: $0.itemStatus)
-                        }
-                )
+                state.dataLoadingStatus = .success
+                state.categoriesList = IdentifiedArrayOf(uniqueElements: animals.sorted(by: { $0.order < $1.order }))
                 return .none
-            case .fetchCategoriesResponse(.failure(let error)):
-                print("---> \(error)")
+            case .fetchCategoriesResponse(.failure):
+                state.dataLoadingStatus = .error
                 return .none
-            case .alert(.presented(.didConfirmAlert(let factsState))):
-                return .none
+            case .alert(.presented(.didConfirmAlert(let animal))):
+                return confirmAlertAndLoadView(state: &state, animal: animal)
             case .alert(.presented(.didCancelAlert)):
                 state.confirmationAlert = nil
                 return .none
             case .alert:
                 return .none
-            case .setNavigation(let selection):
-                guard let selection else { return .none }
-
-                return .run { send in
-                    try await self.clock.sleep(for: .seconds(2))
-                    await send(.setNavigationIsActiveDelayCompleted(selection: selection))
-                }
-                .cancellable(id: CancelID.load)
-            case .setNavigationIsActiveDelayCompleted(let selection):
-                return .none
-            case .path(.push(id: let id, state: let test)):
-                print("---> \(id)")
-                print("---> \(test)")
-                switch test.animal.itemStatus {
-                case .paid:
-//                    state.confirmationAlert = AlertState(
-//                        title: TextState("Title"),
-//                        message: TextState("Do you want to...?"),
-//                        buttons: [
-//                            .cancel(TextState("Cancel"), action: .send(.didCancelAlert)),
-//                            .default(TextState("OK"), action: .send(.didConfirmAlert(test)))
-//                        ]
-//                    )
-                    return .none
-                case .free:
-                    state.confirmationAlert = nil
-                case .comingSoon:
-                    return .none
-                }
-                return .none
+            case .cellTapped(let animal):
+                guard animal.content != nil else { return .none }
+                return selectCell(state: &state, animal: animal)
+            case .isLoadingFinished(let animal):
+                state.isLoadingAfterAlertConfirmation = false
+                return Effect.send(.cellTapped(animal))
             default:
                 return .none
             }
         }
         .ifLet(\.$confirmationAlert, action: /CategoriesListDomain.Action.alert)
-        .forEach(\.path, action: /CategoriesListDomain.Action.path) {
+        .ifLet(\.$path, action: /CategoriesListDomain.Action.path) {
             FactsListDomain()
+        }
+    }
+    
+    private func selectCell(
+        state: inout State,
+        animal: Animal
+    ) -> Effect<Action> {
+        switch animal.status {
+        case .paid:
+            state.confirmationAlert = AlertState(
+                title: TextState("Watch Ad to continue"),
+                buttons: [
+                    .cancel(TextState("Cancel"), action: .send(.didCancelAlert)),
+                    .default(TextState("Show Ad"), action: .send(.didConfirmAlert(animal)))
+                ]
+            )
+            return .none
+        case .free:
+            state.confirmationAlert = nil
+            state.path = FactsListDomain.State(animal: animal)
+            return .none
+        }
+    }
+    
+    private func confirmAlertAndLoadView(
+        state: inout State,
+        animal: Animal
+    ) -> Effect<Action> {
+        state.isLoadingAfterAlertConfirmation = true
+        
+        var newAnimal = animal
+        newAnimal.setStatus(newStatus: .free)
+        
+        state.categoriesList[id: newAnimal.id]?.status = .free
+        return .run { [newAnimal] send in
+            try await self.clock.sleep(for: .seconds(2))
+            await send(.isLoadingFinished(newAnimal))
+        }
+    }
+    
+    private func fetchCategories(
+        state: inout State
+    ) -> Effect<Action> {
+        if state.dataLoadingStatus == .success || state.dataLoadingStatus == .loading {
+            return .none
+        }
+        
+        state.dataLoadingStatus = .loading
+        return .run { send in
+            await send(.fetchCategoriesResponse(TaskResult { try await fetchCategories() }))
         }
     }
 }

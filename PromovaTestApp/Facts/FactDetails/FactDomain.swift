@@ -8,11 +8,6 @@
 import Foundation
 import ComposableArchitecture
 
-enum MoveButton {
-    case previous
-    case next
-}
-
 @Reducer
 struct FactDomain {
     struct State: Equatable {
@@ -23,6 +18,11 @@ struct FactDomain {
     
     enum Action: Equatable {
         case moveButtonTapped(MoveButton)
+        
+        enum MoveButton {
+            case previous
+            case next
+        }
     }
     
     var body: some Reducer<State, Action> {

@@ -13,70 +13,71 @@ struct CategoriesListView: View {
     @State private var startAnimation = false
     
     var body: some View {
-        NavigationStackStore(
-            self.store.scope(state: \.path, action: { .path($0) }),
-            root: {
-                WithViewStore(self.store, observe: { $0 }) { viewStore in
-                    NavigationView {
-                        ZStack {
-                            LinearGradient(
-                                colors: [.purple, .blue],
-                                startPoint: startAnimation ? .topTrailing : .bottomLeading,
-                                endPoint: startAnimation ? .bottomTrailing : .topTrailing
-                            )
-                            .ignoresSafeArea()
-                            .onAppear {
-                                withAnimation(.linear(duration: 5.0).repeatForever()) {
-                                    startAnimation.toggle()
-                                }
-                            }
-                            
-                            VStack {
-                                HStack {
-                                    Text("Animals")
-                                        .font(.system(size: 32, weight: .bold))
-                                        .foregroundColor(.primary)
-                                    Spacer()
-                                }
-                                .padding(.horizontal, 24)
-                                .padding(.vertical, 12)
-                                
-                                ScrollView(.vertical, showsIndicators: false) {
-                                    VStack(spacing: 16) {
-                                        ForEach(viewStore.categoriesList) { category in
-                                            NavigationLink(
-                                                state: FactsListDomain.State.init(
-                                                    animal: category.animal,
-                                                    actualState: category.animal.itemStatus
-                                                )
-                                            ) {
-                                                CategoryCellView(
-                                                    animal: category.animal,
-                                                    actualState: category.actualState
-                                                )
-                                            }
-                                        }
-                                    }
-                                    .padding(.top)
-                                }
-                            }
-                        }
-                        .task {
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationStack {
+                ZStack {
+                    gradientView()
+                    
+                    if viewStore.isDataLoading {
+                        ProgressView()
+                            .frame(width: 100, height: 100)
+                    } else if viewStore.shouldShowError {
+                        ErrorView(message: "We couldn't fetch animals list unfortunately :(") {
                             viewStore.send(.fetchCategories)
                         }
-                        .alert(
-                            store: self.store.scope(
-                                state: \.$confirmationAlert,
-                                action: { .alert($0) }
-                            )
-                        )
+                    } else {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack(spacing: 16) {
+                                ForEach(viewStore.categoriesList) { animal in
+                                    CategoryCellView(animal: animal)
+                                        .onTapGesture {
+                                            viewStore.send(.cellTapped(animal))
+                                        }
+                                }
+                            }
+                            .padding(.top)
+                            .navigationDestination(
+                                store: self.store.scope(
+                                    state: \.$path,
+                                    action: { .path($0) }
+                                )
+                            ) { store in
+                                FactsListView(store: store)
+                            }
+                        }
                     }
                 }
-            },
-            destination: { store in
-                FactsListView(store: store)
+                .alert(
+                    store: self.store.scope(
+                        state: \.$confirmationAlert,
+                        action: { .alert($0) }
+                    )
+                )
+                .overlay {
+                    if viewStore.isLoadingAfterAlertConfirmation {
+                        LoadingView(tintColor: .yellow, scaleSize: 2.0)
+                    }
+                }
+                .navigationTitle("Animals")
             }
+            .onAppear {
+                viewStore.send(.fetchCategories)
+            }
+        }
+    }
+    
+    private func gradientView() -> some View {
+        LinearGradient(
+            colors: [.purple, .blue],
+            startPoint: startAnimation ? .topTrailing : .bottomLeading,
+            endPoint: startAnimation ? .bottomTrailing : .topTrailing
         )
+        .ignoresSafeArea()
+        .onAppear {
+            withAnimation(.linear(duration: 5.0).repeatForever()) {
+                startAnimation.toggle()
+            }
+        }
     }
 }
 

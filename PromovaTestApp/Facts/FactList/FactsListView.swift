@@ -9,11 +9,17 @@ import SwiftUI
 import ComposableArchitecture
 
 struct FactsListView: View {
+    enum Alignment {
+        case leading
+        case trailing
+    }
+    
     let store: Store<FactsListDomain.State, FactsListDomain.Action>
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationView {
+            NavigationStack {
                 ZStack {
                     Color.green.ignoresSafeArea()
                 }
@@ -32,16 +38,46 @@ struct FactsListView: View {
                             )
                             .tag(fact.id)
                         }
-                        .frame(height: 435)
+                        .frame(height: 500)
                         .cornerRadius(8)
                         .padding(.horizontal, 24)
                     } else {
                         EmptyFactsStateView()
                     }
                 }
+                .sheet(
+                    isPresented: viewStore.binding(
+                        get: \.isShareSheetPresented,
+                        send: { .setSheet(isPresented: $0) }
+                    )
+                ) {
+                    if let facts = viewStore.animal.content {
+                        ActivityView(text: facts[viewStore.factDomain.selectedIndex].fact)
+                    }
+                }
             }
             .navigationTitle(viewStore.animal.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading: customBarButton(for: .leading) {
+                    dismiss()
+                },
+                trailing: customBarButton(for: .trailing) {
+                    viewStore.send(.setSheet(isPresented: true))
+                }
+            )
         }
+    }
+    
+    private func customBarButton(for alignment: Alignment, onTapGesture: @escaping () -> Void) -> some View {
+        let imageName = alignment == .leading ? Images.barButtonName : Images.shareButtonName
+        return Image(systemName: imageName)
+            .renderingMode(.template)
+            .foregroundStyle(.black)
+            .onTapGesture {
+                onTapGesture()
+            }
     }
 }
 
@@ -50,7 +86,6 @@ struct FactsListView: View {
         store: Store(
             initialState: FactsListDomain.State(
                 animal: Animal.sample,
-                actualState: Animal.sample.itemStatus,
                 factDomain: FactDomain.State()
             )
         ) {
